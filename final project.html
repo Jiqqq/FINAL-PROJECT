@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="stylez.css">
+    </head>
+        <body>
+            <section>
+                <div class="result">
+                    <div id="show"></div>
+                    <hr>
+                    <div class="keyList">
+                    </div>
+                </div>
+            </section>
+        <div class="keyList">
+            <div class="key">AC</div>
+            <div class="key">/</div>
+            <div class="key">*</div>
+            <div class="key">⌫</div>
+            <div class="key">1</div>
+            <div class="key">2</div>
+            <div class="key">3</div>
+            <div class="key">-</div>
+            <div class="key">4</div>
+            <div class="key">5</div>
+            <div class="key">6</div>
+            <div class="key">+</div>
+            <div class="key">7</div>
+            <div class="key">8</div>
+            <div class="key">9</div>
+            <div class="key">.</div>
+            <div class="key">0</div>
+            <div id="equal" class="key">=</div>
+         </div>
+         <script>
+             let show = document.getElementById('show');
+
+             let keyList = Array.from(document.getElementsByClassName('key'));
+
+             keyList.map( key => {
+    key.addEventListener('click', (e) => {
+        switch(e.target.innerText){
+            case 'AC':
+                show.innerText = '';
+                break;
+            case '=':
+                try{
+                    show.innerText = eval(show.innerText);
+                } catch {
+                    show.innerText = "ERROR"
+                }
+                break;
+            case '⌫':
+                if (show.innerText){
+                   show.innerText = show.innerText.slice(0, -1);
+                }
+                break;
+            default:
+                show.innerText += e.target.innerText;
+        }
+    });
+});
+</script>  
+</body>
+</html>

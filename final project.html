@@ -38,25 +38,25 @@
 
              keyList.map( key => {
     key.addEventListener('click', (e) => {
-        switch(e.target.innerText){
-            case 'AC':
-                show.innerText = '';
-                break;
-            case '=':
-                try{
+       if (e.target.innerText == 'AC'){
+            show.innerText = '';
+        }
+        if (e.target.innerText == '=') {
+            try{
                     show.innerText = eval(show.innerText);
                 } catch {
                     show.innerText = "ERROR"
                 }
-                break;
-            case '⌫':
-                if (show.innerText){
+        }
+        if (e.target.innerText == '⌫'){
+            if (show.innerText){
                    show.innerText = show.innerText.slice(0, -1);
                 }
-                break;
-            default:
-                show.innerText += e.target.innerText;
         }
+        if(e.target.innerText != 'AC' && e.target.innerText != '=' && e.target.innerText != '⌫'){
+            show.innerText += e.target.innerText;
+        }
+
     });
 });
 </script>  
